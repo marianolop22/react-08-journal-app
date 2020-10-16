@@ -1,8 +1,14 @@
 import React from 'react'
-import {AppRouter} from './components/routers/AppRouter'
+import { Provider } from "react-redux";
 
+import {AppRouter} from './routers/AppRouter'
+import { store } from './store/store';
+
+//Con esto se configura de forma total el redux en toda la aplicacion
 export const JournalApp = () => {
     return (
-        <AppRouter/>
+        <Provider store={store}>
+            <AppRouter/>
+        </Provider>
     )
 }
