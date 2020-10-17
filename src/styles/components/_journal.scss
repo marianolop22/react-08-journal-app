@@ -38,6 +38,11 @@
     }
 }
 
+// .journal__entry-other {
+//     display: flex;
+//     justify-content: space-evenly;
+// }
+
 .journal__entries {
     margin-top: 30px;
     flex: 1 1 auto;
@@ -53,7 +58,8 @@
     margin-bottom: 10px;
     overflow: hidden;
     cursor: pointer;
-
+    display: flex;
+    justify-content: space-between;
 }
 
 .journal__entry-picture {
