@@ -10,7 +10,8 @@ export const startLoginEmailPassword = (email, password) => {
 
         dispatch ( startLoading() );
 
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        //se agrega el return para que ser puedan hacer las pruebas
+        return firebase.auth().signInWithEmailAndPassword(email, password)
             .then( ({user}) => {
                 dispatch (login (user.uid, user.displayName) );
             })
@@ -30,7 +31,7 @@ export const startLoginEmailPassword = (email, password) => {
 export const startRegisterWithEmailPasswordName = (email,  password, name) => {
     
     return ( dispatch ) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        return firebase.auth().createUserWithEmailAndPassword(email, password)
             .then( async ({ user }) => {
                 await user.updateProfile({displayName: name});
                 dispatch ( login ( user.uid, user.displayName ));
@@ -61,12 +62,12 @@ export const startGoogleLogin = () => {
 export const startLogout = () => {
     return async ( dispatch ) => {
 
-        dispatch ( startLoading() );
+        // dispatch ( startLoading() );
 
         await firebase.auth().signOut()
         dispatch ( logout () );
         dispatch ( notesLogoutCleaning ());
-        dispatch ( finishLoading() );
+        // dispatch ( finishLoading() );
     }
 };
 

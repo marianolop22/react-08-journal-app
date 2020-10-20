@@ -12,7 +12,7 @@ cloudinary.config({
 
 describe ('Pruebas de fileUpload', ()=> {
 
-    test('debe de subir un archivo', async () => {
+    test('debe de subir un archivo', async (done) => {
         
         const resp = await fetch('https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png');
         const blob = await resp.blob();
@@ -24,7 +24,7 @@ describe ('Pruebas de fileUpload', ()=> {
         const segments = url.split('/');
         const imageid = segments[segments.length - 1].replace ('.png','');
 
-        cloudinary.v2.api.delete_resources(imageid, {}, (resp)=>{
+        cloudinary.v2.api.delete_resources(imageid, {}, ()=>{
             done();
         });
     });
